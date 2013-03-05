@@ -4,8 +4,8 @@ ALL POSTS
 <ul>
 <% @posts.each do|p| %>
   <li><%= p.description %></li>
-  <li><%= link_to "Go!", p.link %></li>
-  </ul>
+  <%= link_to "Go!", p.link %>
+  
 <% end %>
-
+</ul>
 <%= link_to "New Post", new_post_path %>
