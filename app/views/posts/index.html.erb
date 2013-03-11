@@ -2,10 +2,19 @@ ALL POSTS
 <p>&nbsp;</p>
 
 <ul>
-<% @posts.each do|p| %>
-  <li><%= p.description %></li>
-  <%= link_to "Go!", p.link %>
-  
-<% end %>
+	<% @posts.each do |p| %>
+	    <li><%= p.description %>
+		    <%= link_to "Go!", p.link %>
+		    <ul>
+				<%=p.comments.each do |c| %>
+				<li><%= render c %></li>
+					<%= render 'comments/form',
+						comment: p.comments.build,
+						post: p %>  
+				<% end %>
+			</ul>
+		</li>
+	<% end %>
 </ul>
+
 <%= link_to "New Post", new_post_path %>
